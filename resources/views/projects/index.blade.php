@@ -1,7 +1,7 @@
 <x-layouts::app :title="__('projects.title')">
     <div class="space-y-5">
-        <div class="flex flex-wrap justify-between gap-3">
-            <form class="grid gap-3 sm:grid-cols-5" method="GET">
+        <div class="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-start">
+            <form class="grid w-full gap-3 sm:grid-cols-2 xl:grid-cols-5" method="GET">
                 <input class="field" name="search" value="{{ request('search') }}" placeholder="{{ __('common.search') }}">
                 <select class="field" name="status">
                     <option value="">{{ __('common.all_statuses') }}</option>

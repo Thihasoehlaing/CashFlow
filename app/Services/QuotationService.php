@@ -41,7 +41,12 @@ class QuotationService
     public function convertToInvoice(Quotation $quotation): Invoice
     {
         return DB::transaction(function () use ($quotation): Invoice {
-            $quotation->loadMissing('items');
+            $quotation->loadMissing(['invoice', 'items']);
+
+            if ($quotation->invoice) {
+                return $quotation->invoice;
+            }
+
             $invoice = Invoice::query()->create([
                 'invoice_number' => app(InvoiceService::class)->generateNumber(),
                 'quotation_id' => $quotation->id,

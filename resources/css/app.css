@@ -48,11 +48,11 @@
     .field:focus { border-color: var(--color-primary); box-shadow: 0 0 0 3px var(--color-primary-muted), 0 0 24px rgba(201, 168, 76, 0.16); }
     .form-field { @apply grid gap-2 text-sm font-medium text-[var(--color-text-muted)]; }
     .form-error { @apply text-xs font-medium text-[var(--color-danger)]; }
-    .btn-primary { @apply relative overflow-hidden rounded-lg px-4 py-2 text-sm font-semibold text-black transition; background: var(--color-primary); }
+    .btn-primary { @apply relative inline-flex h-11 w-fit items-center justify-center overflow-hidden rounded-lg px-4 py-2 text-sm font-semibold whitespace-nowrap text-black transition; background: var(--color-primary); }
     .btn-primary:hover { background: var(--color-primary-hover); }
     .btn-primary::after { content: ''; @apply absolute inset-y-0 -left-16 w-12 skew-x-12 bg-white/30 transition-all duration-500; }
     .btn-primary:hover::after { left: calc(100% + 4rem); }
-    .btn-secondary { @apply rounded-lg border px-4 py-2 text-sm font-semibold transition; border-color: var(--color-border); color: var(--color-text); background: var(--color-surface-raised); }
+    .btn-secondary { @apply inline-flex h-11 w-fit items-center justify-center rounded-lg border px-4 py-2 text-sm font-semibold whitespace-nowrap transition; border-color: var(--color-border); color: var(--color-text); background: var(--color-surface-raised); }
     .btn-secondary:hover { color: var(--color-primary); border-color: var(--color-primary); }
     .btn-danger { @apply rounded-lg px-4 py-2 text-sm font-semibold text-white; background: var(--color-danger); }
     .icon-btn { @apply grid size-8 place-items-center rounded-md border; border-color: var(--color-border); }

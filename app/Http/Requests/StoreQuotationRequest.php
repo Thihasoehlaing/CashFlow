@@ -18,7 +18,7 @@ class StoreQuotationRequest extends FormRequest
             'client_id' => ['required', 'exists:clients,id'],
             'project_id' => ['nullable', 'exists:projects,id'],
             'project_title' => ['required', 'string', 'max:255'],
-            'status' => ['required', Rule::in(['draft', 'sent'])],
+            'status' => ['required', Rule::in(['draft'])],
             'currency' => ['required', 'string', 'size:3'],
             'issue_date' => ['required', 'date'],
             'valid_until' => ['required', 'date', 'after_or_equal:issue_date'],

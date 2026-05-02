@@ -9,6 +9,7 @@ return [
     'deleted' => 'Quotation deleted.',
     'edit_locked' => 'Only draft quotations can be edited.',
     'status_updated' => 'Quotation status updated.',
+    'accepted_invoice_created' => 'Quotation accepted and draft invoice created.',
     'convert_failed' => 'Only accepted quotations can be converted.',
     'number' => 'QUO number',
     'project' => 'Project',
@@ -34,7 +35,8 @@ return [
     'payment_terms' => 'Payment terms',
     'terms_conditions' => 'Terms and conditions',
     'save_draft' => 'Save as Draft',
-    'save_send' => 'Save & Send',
     'update_status' => 'Update status',
     'convert' => 'Convert to invoice',
+    'mark_accepted' => 'Mark accepted',
+    'view_invoice' => 'View invoice',
 ];

@@ -19,7 +19,7 @@ class QuotationController extends Controller
 {
     public function index(Request $request): View
     {
-        $query = Quotation::query()->with(['client', 'project'])->latest('issue_date');
+        $query = Quotation::query()->with(['client', 'invoice', 'project'])->latest('issue_date');
         $query->when($request->filled('status'), fn ($q) => $q->where('status', $request->string('status')));
         $query->when($request->filled('client_id'), fn ($q) => $q->where('client_id', $request->integer('client_id')));
         $query->when($request->integer('month'), fn ($q, $month) => $q->whereYear('issue_date', $request->integer('year', now()->year))->whereMonth('issue_date', $month));
@@ -83,12 +83,13 @@ class QuotationController extends Controller
         return redirect()->route('quotations.index')->with('success', __('quotations.deleted'));
     }
 
-    public function updateStatus(Request $request, Quotation $quotation): RedirectResponse
+    public function updateStatus(Request $request, Quotation $quotation, QuotationService $service): RedirectResponse
     {
-        $validated = $request->validate(['status' => ['required', 'in:draft,sent,accepted,rejected']]);
+        $validated = $request->validate(['status' => ['required', 'in:accepted']]);
         $quotation->update($validated);
+        $invoice = $service->convertToInvoice($quotation->fresh());
 
-        return back()->with('success', __('quotations.status_updated'));
+        return redirect()->route('invoices.edit', $invoice)->with('success', __('quotations.accepted_invoice_created'));
     }
 
     public function convertToInvoice(Quotation $quotation, QuotationService $service): RedirectResponse

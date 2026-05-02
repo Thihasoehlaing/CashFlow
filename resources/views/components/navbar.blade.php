@@ -36,7 +36,7 @@ $isSectionIndex = $pageTitle === $currentSection['label'];
             @endunless
         </nav>
         <div class="flex items-center gap-3">
-            <a href="{{ route('lang.switch', app()->getLocale() === 'en' ? 'my' : 'en') }}" class="hidden rounded-full border border-[var(--color-border)] px-3 py-1 text-sm text-[var(--color-text-muted)] sm:block">{{ app()->getLocale() === 'en' ? 'MY' : 'EN' }}</a>
+            <a href="{{ route('lang.switch', app()->getLocale() === 'en' ? 'my' : 'en') }}" class="shrink-0 rounded-full border border-[var(--color-border)] px-3 py-1 text-sm text-[var(--color-text-muted)]">{{ app()->getLocale() === 'en' ? 'MY' : 'EN' }}</a>
             <div class="grid size-9 place-items-center rounded-full bg-[var(--color-primary)] font-semibold text-black">{{ auth()->user()->initials() }}</div>
         </div>
     </div>

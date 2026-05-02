@@ -12,7 +12,7 @@ It is designed for a single user who wants a practical finance back office rathe
 - Transfers between accounts with exchange-rate handling and fees.
 - Client and project records for freelance or service work.
 - Project cost tracking for domain, server, maintenance, and other recurring costs.
-- Quotations and invoices with line items, discounts, tax, status flows, PDF download, and quotation-to-invoice conversion.
+- Quotations and invoices with line items, discounts, tax, PDF download, and accepted quotation-to-draft-invoice conversion.
 - Settings for business profile, PDF payment accounts, FX rates, tax defaults, payment terms, and expense categories.
 - English and Myanmar locale support.
 - Single-user session authentication through Laravel Fortify / Livewire starter auth.

@@ -1,7 +1,7 @@
 <x-layouts::app :title="__('income.title')">
     <div class="space-y-5">
-        <div class="flex flex-wrap justify-between gap-3">
-            <form class="grid gap-3 sm:grid-cols-4" method="GET">
+        <div class="grid gap-3 sm:grid-cols-[1fr_auto] sm:items-start">
+            <form class="grid w-full gap-3 sm:grid-cols-2 xl:grid-cols-4" method="GET">
                 <input class="field" name="month" type="number" min="1" max="12" value="{{ request('month') }}" placeholder="{{ __('common.month') }}">
                 <input class="field" name="year" type="number" value="{{ request('year', now()->year) }}">
                 <select class="field" name="source">

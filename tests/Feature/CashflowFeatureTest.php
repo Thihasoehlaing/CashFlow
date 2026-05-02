@@ -4,6 +4,8 @@ use App\Models\Account;
 use App\Models\Client;
 use App\Models\Expense;
 use App\Models\Income;
+use App\Models\Invoice;
+use App\Models\Quotation;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -105,6 +107,45 @@ test('quotation can be created with line items', function () {
 
     $this->assertDatabaseHas('quotations', ['project_title' => 'Website build', 'total' => 1080]);
     $this->assertDatabaseHas('quotation_items', ['description' => 'Design', 'amount' => 1000]);
+});
+
+test('accepting a quotation creates one draft invoice', function () {
+    $this->actingAs(User::factory()->create());
+    $client = Client::factory()->create();
+
+    $this->post(route('quotations.store'), [
+        'client_id' => $client->id,
+        'project_title' => 'Website build',
+        'status' => 'draft',
+        'currency' => 'MYR',
+        'issue_date' => today()->toDateString(),
+        'valid_until' => today()->addDays(30)->toDateString(),
+        'discount_type' => null,
+        'discount_value' => 0,
+        'tax_rate' => 8,
+        'items' => [
+            ['description' => 'Design', 'item_type' => 'fixed', 'quantity' => 1, 'unit_price' => 1000],
+        ],
+    ]);
+
+    $quotation = Quotation::query()->firstOrFail();
+
+    $this->patch(route('quotations.status', $quotation), ['status' => 'accepted'])
+        ->assertRedirect(route('invoices.edit', Invoice::query()->firstOrFail()));
+
+    $this->assertDatabaseHas('quotations', ['id' => $quotation->id, 'status' => 'accepted']);
+    $this->assertDatabaseHas('invoices', [
+        'quotation_id' => $quotation->id,
+        'client_id' => $client->id,
+        'project_title' => 'Website build',
+        'status' => 'draft',
+        'total' => 1080,
+    ]);
+    $this->assertDatabaseHas('invoice_items', ['description' => 'Design', 'amount' => 1000]);
+
+    $this->patch(route('quotations.status', $quotation), ['status' => 'accepted']);
+
+    expect(Invoice::query()->where('quotation_id', $quotation->id)->count())->toBe(1);
 });
 
 test('expenses index renders category breakdown with strict mysql grouping', function () {

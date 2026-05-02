@@ -13,5 +13,5 @@ return [
     'currency' => 'Currency',
     'myr_preview' => 'MYR preview',
     'monthly_total' => 'Monthly total',
-    'myr' => 'MYR equivalent'
+    'myr' => 'MYR equivalent',
 ];

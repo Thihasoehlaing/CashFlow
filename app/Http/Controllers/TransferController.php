@@ -15,12 +15,10 @@ class TransferController extends Controller
         return view('transfers.index', ['transfers' => Transfer::query()->with(['fromAccount', 'toAccount'])->latest('date')->paginate(15)]);
     }
 
-
     public function create(): View
     {
         return view('transfers.form', ['accounts' => Account::query()->where('is_active', true)->orderBy('name')->get()]);
     }
-
 
     public function store(StoreTransferRequest $request): RedirectResponse
     {
@@ -28,7 +26,6 @@ class TransferController extends Controller
 
         return redirect()->route('transfers.index')->with('success', __('transfers.created'));
     }
-
 
     public function destroy(Transfer $transfer): RedirectResponse
     {

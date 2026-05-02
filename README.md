@@ -33,7 +33,7 @@ It is designed for a single user who wants a practical finance back office rathe
 
 ## Requirements
 
-- PHP 8.4 or compatible PHP 8.3+
+- PHP 8.4+
 - Composer
 - Node.js and npm
 - MySQL

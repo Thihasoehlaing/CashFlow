@@ -10,5 +10,5 @@ return [
     'from_amount' => 'Amount sent',
     'to_amount' => 'Amount received',
     'exchange_rate' => 'Exchange rate',
-    'fee' => 'Fee'
+    'fee' => 'Fee',
 ];

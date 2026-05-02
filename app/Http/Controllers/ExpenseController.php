@@ -31,12 +31,10 @@ class ExpenseController extends Controller
         ]);
     }
 
-
     public function create(): View
     {
         return view('expenses.form', ['expense' => new Expense, 'accounts' => Account::query()->where('is_active', true)->orderBy('name')->get(), 'categories' => collect(Setting::get('expense_categories', []))->sort()->values()]);
     }
-
 
     public function store(StoreExpenseRequest $request, CurrencyService $currency): RedirectResponse
     {
@@ -47,12 +45,10 @@ class ExpenseController extends Controller
         return redirect()->route('expenses.index')->with('success', __('expenses.created'));
     }
 
-
     public function edit(Expense $expense): View
     {
         return view('expenses.form', ['expense' => $expense, 'accounts' => Account::query()->where('is_active', true)->orderBy('name')->get(), 'categories' => collect(Setting::get('expense_categories', []))->sort()->values()]);
     }
-
 
     public function update(UpdateExpenseRequest $request, Expense $expense, CurrencyService $currency): RedirectResponse
     {
@@ -62,7 +58,6 @@ class ExpenseController extends Controller
 
         return redirect()->route('expenses.index')->with('success', __('expenses.updated'));
     }
-
 
     public function destroy(Expense $expense): RedirectResponse
     {

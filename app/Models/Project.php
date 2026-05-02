@@ -17,7 +17,6 @@ class Project extends Model
     /** @use HasFactory<ProjectFactory> */
     use HasFactory;
 
-
     protected function casts(): array
     {
         return [
@@ -27,48 +26,40 @@ class Project extends Model
         ];
     }
 
-
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
     }
-
 
     public function quotation(): BelongsTo
     {
         return $this->belongsTo(Quotation::class);
     }
 
-
     public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);
     }
-
 
     public function costs(): HasMany
     {
         return $this->hasMany(ProjectCost::class);
     }
 
-
     public function income(): HasMany
     {
         return $this->hasMany(Income::class);
     }
-
 
     public function quotations(): HasMany
     {
         return $this->hasMany(Quotation::class);
     }
 
-
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
     }
-
 
     protected function agreedAmountInMyr(): Attribute
     {

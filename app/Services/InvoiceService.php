@@ -23,7 +23,6 @@ class InvoiceService
         return app(QuotationService::class)->calculateTotals($items, $discountType, $discountValue, $taxRate);
     }
 
-
     public function markAsPaid(Invoice $invoice, int $accountId, string $paidAt, bool $logIncome = false): Invoice
     {
         return DB::transaction(function () use ($invoice, $accountId, $paidAt, $logIncome): Invoice {
@@ -49,7 +48,6 @@ class InvoiceService
             return $invoice->refresh();
         });
     }
-
 
     public function checkOverdue(): int
     {

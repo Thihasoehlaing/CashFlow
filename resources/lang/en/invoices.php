@@ -41,5 +41,5 @@ return [
     'due_date' => 'Due date',
     'payment_account' => 'Payment account',
     'mark_paid' => 'Mark as paid',
-    'log_income' => 'Auto-log income'
+    'log_income' => 'Auto-log income',
 ];

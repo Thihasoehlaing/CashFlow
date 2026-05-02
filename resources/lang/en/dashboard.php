@@ -12,5 +12,5 @@ return [
     'top_categories' => 'Top expense categories',
     'recent_activity' => 'Recent activity',
     'outstanding_invoices' => 'Outstanding invoices',
-    'income' => 'Income'
+    'income' => 'Income',
 ];

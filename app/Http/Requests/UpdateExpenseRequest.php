@@ -2,6 +2,4 @@
 
 namespace App\Http\Requests;
 
-class UpdateExpenseRequest extends StoreExpenseRequest
-{
-}
+class UpdateExpenseRequest extends StoreExpenseRequest {}

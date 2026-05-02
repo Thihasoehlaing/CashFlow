@@ -20,13 +20,11 @@ class FortifyServiceProvider extends ServiceProvider
         $this->configureRateLimiting();
     }
 
-
     private function configureActions(): void
     {
         Fortify::resetUserPasswordsUsing(ResetUserPassword::class);
         Fortify::createUsersUsing(CreateNewUser::class);
     }
-
 
     private function configureViews(): void
     {
@@ -38,7 +36,6 @@ class FortifyServiceProvider extends ServiceProvider
         Fortify::resetPasswordView(fn () => view('livewire.auth.reset-password'));
         Fortify::requestPasswordResetLinkView(fn () => view('livewire.auth.forgot-password'));
     }
-
 
     private function configureRateLimiting(): void
     {

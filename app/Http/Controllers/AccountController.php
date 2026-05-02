@@ -23,12 +23,10 @@ class AccountController extends Controller
         ]);
     }
 
-
     public function create(): View
     {
         return view('accounts.form', ['account' => new Account]);
     }
-
 
     public function store(StoreAccountRequest $request): RedirectResponse
     {
@@ -36,7 +34,6 @@ class AccountController extends Controller
 
         return redirect()->route('accounts.index')->with('success', __('accounts.created'));
     }
-
 
     public function show(Account $account): View
     {
@@ -50,12 +47,10 @@ class AccountController extends Controller
         return view('accounts.show', compact('account', 'transactions'));
     }
 
-
     public function edit(Account $account): View
     {
         return view('accounts.form', compact('account'));
     }
-
 
     public function update(StoreAccountRequest $request, Account $account): RedirectResponse
     {
@@ -63,7 +58,6 @@ class AccountController extends Controller
 
         return redirect()->route('accounts.index')->with('success', __('accounts.updated'));
     }
-
 
     public function destroy(Account $account): RedirectResponse
     {

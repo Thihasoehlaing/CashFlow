@@ -36,5 +36,5 @@ return [
     'save_draft' => 'Save as Draft',
     'save_send' => 'Save & Send',
     'update_status' => 'Update status',
-    'convert' => 'Convert to invoice'
+    'convert' => 'Convert to invoice',
 ];

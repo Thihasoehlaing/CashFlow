@@ -2,6 +2,4 @@
 
 namespace App\Http\Requests;
 
-class UpdateIncomeRequest extends StoreIncomeRequest
-{
-}
+class UpdateIncomeRequest extends StoreIncomeRequest {}

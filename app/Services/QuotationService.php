@@ -38,7 +38,6 @@ class QuotationService
         ];
     }
 
-
     public function convertToInvoice(Quotation $quotation): Invoice
     {
         return DB::transaction(function () use ($quotation): Invoice {

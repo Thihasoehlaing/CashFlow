@@ -37,7 +37,6 @@ class ProjectController extends Controller
         ]);
     }
 
-
     public function create(Request $request): View
     {
         return view('projects.form', $this->formData(new Project([
@@ -48,7 +47,6 @@ class ProjectController extends Controller
         ])));
     }
 
-
     public function store(StoreProjectRequest $request): RedirectResponse
     {
         $project = Project::query()->create($request->validated());
@@ -56,7 +54,6 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.show', $project)->with('success', __('projects.created'));
     }
-
 
     public function show(Project $project): View
     {
@@ -70,12 +67,10 @@ class ProjectController extends Controller
         ]);
     }
 
-
     public function edit(Project $project): View
     {
         return view('projects.form', $this->formData($project));
     }
-
 
     public function update(UpdateProjectRequest $request, Project $project): RedirectResponse
     {
@@ -84,7 +79,6 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.show', $project)->with('success', __('projects.updated'));
     }
-
 
     public function destroy(Project $project): RedirectResponse
     {
@@ -108,7 +102,6 @@ class ProjectController extends Controller
             'invoices' => Invoice::query()->with('client')->orderBy('project_title')->orderBy('invoice_number')->get(),
         ];
     }
-
 
     private function syncLinkedDocuments(Project $project): void
     {

@@ -28,12 +28,10 @@ class InvoiceController extends Controller
         return view('invoices.index', ['invoices' => $query->paginate(15)->withQueryString(), 'clients' => Client::query()->orderBy('name')->get()]);
     }
 
-
     public function create(): View
     {
         return view('invoices.form', ['invoice' => new Invoice(['issue_date' => today(), 'due_date' => today()->addDays(14)]), 'clients' => Client::query()->orderBy('name')->get(), 'accounts' => Account::query()->where('is_active', true)->orderBy('name')->get(), 'projects' => Project::query()->orderBy('name')->get()]);
     }
-
 
     public function store(StoreInvoiceRequest $request, InvoiceService $service): RedirectResponse
     {
@@ -49,7 +47,6 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice)->with('success', __('invoices.created'));
     }
 
-
     public function show(Invoice $invoice): View
     {
         return view('invoices.show', [
@@ -57,7 +54,6 @@ class InvoiceController extends Controller
             'accounts' => Account::query()->where('is_active', true)->orderBy('name')->get(),
         ]);
     }
-
 
     public function edit(Invoice $invoice): View|RedirectResponse
     {
@@ -67,7 +63,6 @@ class InvoiceController extends Controller
 
         return view('invoices.form', ['invoice' => $invoice->load('items'), 'clients' => Client::query()->orderBy('name')->get(), 'accounts' => Account::query()->where('is_active', true)->orderBy('name')->get(), 'projects' => Project::query()->orderBy('name')->get()]);
     }
-
 
     public function update(UpdateInvoiceRequest $request, Invoice $invoice, InvoiceService $service): RedirectResponse
     {
@@ -85,14 +80,12 @@ class InvoiceController extends Controller
         return redirect()->route('invoices.show', $invoice)->with('success', __('invoices.updated'));
     }
 
-
     public function destroy(Invoice $invoice): RedirectResponse
     {
         $invoice->delete();
 
         return redirect()->route('invoices.index')->with('success', __('invoices.deleted'));
     }
-
 
     public function updateStatus(Request $request, Invoice $invoice): RedirectResponse
     {
@@ -101,7 +94,6 @@ class InvoiceController extends Controller
 
         return back()->with('success', __('invoices.status_updated'));
     }
-
 
     public function markAsPaid(Request $request, Invoice $invoice, InvoiceService $service): RedirectResponse
     {
@@ -114,7 +106,6 @@ class InvoiceController extends Controller
 
         return back()->with('success', __('invoices.paid'));
     }
-
 
     public function downloadPdf(Invoice $invoice, PdfService $pdf): Response
     {

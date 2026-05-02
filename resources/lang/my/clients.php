@@ -18,5 +18,5 @@ return [
     'preferred_billing' => 'Preferred billing',
     'total_billed' => 'Total billed',
     'total_paid' => 'Total paid',
-    'outstanding' => 'Outstanding'
+    'outstanding' => 'Outstanding',
 ];

@@ -18,7 +18,6 @@ class User extends Authenticatable
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable, TwoFactorAuthenticatable;
 
-
     protected function casts(): array
     {
         return [
@@ -26,7 +25,6 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-
 
     public function initials(): string
     {

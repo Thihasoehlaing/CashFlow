@@ -27,12 +27,10 @@ class QuotationController extends Controller
         return view('quotations.index', ['quotations' => $query->paginate(15)->withQueryString(), 'clients' => Client::query()->orderBy('name')->get()]);
     }
 
-
     public function create(): View
     {
         return view('quotations.form', ['quotation' => new Quotation(['issue_date' => today(), 'valid_until' => today()->addDays((int) Setting::get('default_validity_days', 30))]), 'clients' => Client::query()->orderBy('name')->get(), 'projects' => Project::query()->orderBy('name')->get()]);
     }
-
 
     public function store(StoreQuotationRequest $request, QuotationService $service): RedirectResponse
     {
@@ -48,12 +46,10 @@ class QuotationController extends Controller
         return redirect()->route('quotations.show', $quotation)->with('success', __('quotations.created'));
     }
 
-
     public function show(Quotation $quotation): View
     {
         return view('quotations.show', ['quotation' => $quotation->load(['client', 'project', 'items', 'invoice'])]);
     }
-
 
     public function edit(Quotation $quotation): View|RedirectResponse
     {
@@ -63,7 +59,6 @@ class QuotationController extends Controller
 
         return view('quotations.form', ['quotation' => $quotation->load('items'), 'clients' => Client::query()->orderBy('name')->get(), 'projects' => Project::query()->orderBy('name')->get()]);
     }
-
 
     public function update(UpdateQuotationRequest $request, Quotation $quotation, QuotationService $service): RedirectResponse
     {
@@ -81,14 +76,12 @@ class QuotationController extends Controller
         return redirect()->route('quotations.show', $quotation)->with('success', __('quotations.updated'));
     }
 
-
     public function destroy(Quotation $quotation): RedirectResponse
     {
         $quotation->delete();
 
         return redirect()->route('quotations.index')->with('success', __('quotations.deleted'));
     }
-
 
     public function updateStatus(Request $request, Quotation $quotation): RedirectResponse
     {
@@ -97,7 +90,6 @@ class QuotationController extends Controller
 
         return back()->with('success', __('quotations.status_updated'));
     }
-
 
     public function convertToInvoice(Quotation $quotation, QuotationService $service): RedirectResponse
     {
@@ -109,7 +101,6 @@ class QuotationController extends Controller
 
         return redirect()->route('invoices.edit', $invoice)->with('success', __('invoices.created'));
     }
-
 
     public function downloadPdf(Quotation $quotation, PdfService $pdf): Response
     {

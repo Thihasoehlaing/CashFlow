@@ -12,15 +12,22 @@ use Livewire\Component;
 class IncomeForm extends Component
 {
     public string $source = 'job';
-    public ?int $clientId = null;
-    public string $billingType = 'fixed';
-    public float $hours = 0;
-    public float $ratePerHour = 0;
-    public float $amount = 0;
-    public string $currency = 'MYR';
-    public string $projectName = '';
-    public ?int $projectId = null;
 
+    public ?int $clientId = null;
+
+    public string $billingType = 'fixed';
+
+    public float $hours = 0;
+
+    public float $ratePerHour = 0;
+
+    public float $amount = 0;
+
+    public string $currency = 'MYR';
+
+    public string $projectName = '';
+
+    public ?int $projectId = null;
 
     public function mount(?Income $income = null): void
     {
@@ -36,7 +43,6 @@ class IncomeForm extends Component
         $this->recalculateHourlyAmount();
     }
 
-
     public function updatedSource(): void
     {
         if ($this->source !== 'freelance') {
@@ -46,30 +52,25 @@ class IncomeForm extends Component
         }
     }
 
-
     public function updatedClientId(): void
     {
         $this->projectId = null;
     }
-
 
     public function updatedBillingType(): void
     {
         $this->recalculateHourlyAmount();
     }
 
-
     public function updatedHours(): void
     {
         $this->recalculateHourlyAmount();
     }
 
-
     public function updatedRatePerHour(): void
     {
         $this->recalculateHourlyAmount();
     }
-
 
     public function myrPreview(): string
     {
@@ -81,7 +82,6 @@ class IncomeForm extends Component
         return $service->formatAmount($service->convertToMYR($amount, $currency), 'MYR');
     }
 
-
     public function projectNameLabel(): string
     {
         return match ($this->source) {
@@ -91,7 +91,6 @@ class IncomeForm extends Component
         };
     }
 
-
     private function recalculateHourlyAmount(): void
     {
         $properties = $this->all();
@@ -100,7 +99,6 @@ class IncomeForm extends Component
             $this->amount = round((float) ($properties['hours'] ?? 0) * (float) ($properties['ratePerHour'] ?? 0), 2);
         }
     }
-
 
     public function render(): View
     {

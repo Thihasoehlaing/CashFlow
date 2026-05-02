@@ -16,7 +16,6 @@ class Income extends Model
 
     protected $table = 'income';
 
-
     protected function casts(): array
     {
         return [
@@ -28,18 +27,15 @@ class Income extends Model
         ];
     }
 
-
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
     }
 
-
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
-
 
     public function project(): BelongsTo
     {

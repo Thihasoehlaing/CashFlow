@@ -2,6 +2,4 @@
 
 namespace App\Http\Requests;
 
-class UpdateProjectCostRequest extends StoreProjectCostRequest
-{
-}
+class UpdateProjectCostRequest extends StoreProjectCostRequest {}

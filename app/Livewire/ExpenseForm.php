@@ -11,9 +11,10 @@ use Livewire\Component;
 class ExpenseForm extends Component
 {
     public string $category = '';
-    public float $amount = 0;
-    public string $currency = 'MYR';
 
+    public float $amount = 0;
+
+    public string $currency = 'MYR';
 
     public function mount(?Expense $expense = null): void
     {
@@ -21,7 +22,6 @@ class ExpenseForm extends Component
         $this->amount = (float) old('amount', $expense?->amount ?? 0);
         $this->currency = old('currency', $expense?->currency ?? 'MYR');
     }
-
 
     public function myrPreview(): string
     {
@@ -32,7 +32,6 @@ class ExpenseForm extends Component
 
         return $service->formatAmount($service->convertToMYR($amount, $currency), 'MYR');
     }
-
 
     public function render(): View
     {

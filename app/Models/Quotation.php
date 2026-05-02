@@ -16,7 +16,6 @@ class Quotation extends Model
     /** @use HasFactory<QuotationFactory> */
     use HasFactory;
 
-
     protected function casts(): array
     {
         return [
@@ -32,24 +31,20 @@ class Quotation extends Model
         ];
     }
 
-
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
     }
-
 
     public function items(): HasMany
     {
         return $this->hasMany(QuotationItem::class)->orderBy('sort_order');
     }
 
-
     public function invoice(): HasOne
     {
         return $this->hasOne(Invoice::class);
     }
-
 
     public function project(): BelongsTo
     {

@@ -16,7 +16,6 @@ class Account extends Model
     /** @use HasFactory<AccountFactory> */
     use HasFactory;
 
-
     protected function casts(): array
     {
         return [
@@ -25,30 +24,25 @@ class Account extends Model
         ];
     }
 
-
     public function income(): HasMany
     {
         return $this->hasMany(Income::class);
     }
-
 
     public function expenses(): HasMany
     {
         return $this->hasMany(Expense::class);
     }
 
-
     public function outgoingTransfers(): HasMany
     {
         return $this->hasMany(Transfer::class, 'from_account_id');
     }
 
-
     public function incomingTransfers(): HasMany
     {
         return $this->hasMany(Transfer::class, 'to_account_id');
     }
-
 
     protected function currentBalance(): Attribute
     {
@@ -64,7 +58,6 @@ class Account extends Model
             return round((float) $this->opening_balance + $income - $expenses + $incoming - $outgoing - $fees, 2);
         });
     }
-
 
     protected function currentBalanceInMyr(): Attribute
     {

@@ -14,24 +14,20 @@ class Client extends Model
     /** @use HasFactory<ClientFactory> */
     use HasFactory;
 
-
     public function income(): HasMany
     {
         return $this->hasMany(Income::class);
     }
-
 
     public function quotations(): HasMany
     {
         return $this->hasMany(Quotation::class);
     }
 
-
     public function invoices(): HasMany
     {
         return $this->hasMany(Invoice::class);
     }
-
 
     public function projects(): HasMany
     {

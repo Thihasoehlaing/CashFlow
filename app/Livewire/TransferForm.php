@@ -10,31 +10,33 @@ use Livewire\Component;
 class TransferForm extends Component
 {
     public ?int $fromAccountId = null;
-    public ?int $toAccountId = null;
-    public float $fromAmount = 0;
-    public float $toAmount = 0;
-    public string $fromCurrency = 'MYR';
-    public string $toCurrency = 'MYR';
-    public float $exchangeRate = 1;
 
+    public ?int $toAccountId = null;
+
+    public float $fromAmount = 0;
+
+    public float $toAmount = 0;
+
+    public string $fromCurrency = 'MYR';
+
+    public string $toCurrency = 'MYR';
+
+    public float $exchangeRate = 1;
 
     public function updatedFromAccountId(): void
     {
         $this->syncCurrencies();
     }
 
-
     public function updatedToAccountId(): void
     {
         $this->syncCurrencies();
     }
 
-
     public function updatedFromAmount(): void
     {
         $this->calculateToAmount();
     }
-
 
     public function mount(): void
     {
@@ -45,7 +47,6 @@ class TransferForm extends Component
         $this->syncCurrencies();
     }
 
-
     public function syncCurrencies(): void
     {
         $properties = $this->all();
@@ -55,7 +56,6 @@ class TransferForm extends Component
         $this->exchangeRate = $this->getExchangeRate();
         $this->calculateToAmount();
     }
-
 
     public function calculateToAmount(): void
     {
@@ -68,7 +68,6 @@ class TransferForm extends Component
         }
     }
 
-
     public function getExchangeRate(): float
     {
         $properties = $this->all();
@@ -77,7 +76,6 @@ class TransferForm extends Component
 
         return app(CurrencyService::class)->exchangeRate($fromCurrency, $toCurrency);
     }
-
 
     public function render(): View
     {

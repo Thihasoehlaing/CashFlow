@@ -168,8 +168,8 @@ class Security extends Component
             $this->twoFactorEnabled = auth()->user()->hasEnabledTwoFactorAuthentication();
         }
     }
-    #[Computed]
 
+    #[Computed]
     public function modalConfig(): array
     {
         if ($this->twoFactorEnabled) {

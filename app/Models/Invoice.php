@@ -15,7 +15,6 @@ class Invoice extends Model
     /** @use HasFactory<InvoiceFactory> */
     use HasFactory;
 
-
     protected function casts(): array
     {
         return [
@@ -32,30 +31,25 @@ class Invoice extends Model
         ];
     }
 
-
     public function client(): BelongsTo
     {
         return $this->belongsTo(Client::class);
     }
-
 
     public function quotation(): BelongsTo
     {
         return $this->belongsTo(Quotation::class);
     }
 
-
     public function paymentAccount(): BelongsTo
     {
         return $this->belongsTo(Account::class, 'payment_account_id');
     }
 
-
     public function items(): HasMany
     {
         return $this->hasMany(InvoiceItem::class)->orderBy('sort_order');
     }
-
 
     public function project(): BelongsTo
     {

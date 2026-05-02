@@ -14,7 +14,6 @@ class Transfer extends Model
     /** @use HasFactory<TransferFactory> */
     use HasFactory;
 
-
     protected function casts(): array
     {
         return [
@@ -26,12 +25,10 @@ class Transfer extends Model
         ];
     }
 
-
     public function fromAccount(): BelongsTo
     {
         return $this->belongsTo(Account::class, 'from_account_id');
     }
-
 
     public function toAccount(): BelongsTo
     {

@@ -14,7 +14,6 @@ class InvoiceItem extends Model
         return ['quantity' => 'decimal:2', 'unit_price' => 'decimal:2', 'amount' => 'decimal:2'];
     }
 
-
     public function invoice(): BelongsTo
     {
         return $this->belongsTo(Invoice::class);

@@ -31,12 +31,10 @@ class IncomeController extends Controller
         ]);
     }
 
-
     public function create(): View
     {
         return view('income.form', ['income' => new Income, 'clients' => Client::query()->orderBy('name')->get(), 'accounts' => Account::query()->where('is_active', true)->orderBy('name')->get(), 'projects' => Project::query()->with('client')->orderBy('name')->get()]);
     }
-
 
     public function store(StoreIncomeRequest $request, CurrencyService $currency): RedirectResponse
     {
@@ -47,12 +45,10 @@ class IncomeController extends Controller
         return redirect()->route('income.index')->with('success', __('income.created'));
     }
 
-
     public function edit(Income $income): View
     {
         return view('income.form', ['income' => $income, 'clients' => Client::query()->orderBy('name')->get(), 'accounts' => Account::query()->where('is_active', true)->orderBy('name')->get(), 'projects' => Project::query()->with('client')->orderBy('name')->get()]);
     }
-
 
     public function update(UpdateIncomeRequest $request, Income $income, CurrencyService $currency): RedirectResponse
     {
@@ -62,7 +58,6 @@ class IncomeController extends Controller
 
         return redirect()->route('income.index')->with('success', __('income.updated'));
     }
-
 
     public function destroy(Income $income): RedirectResponse
     {

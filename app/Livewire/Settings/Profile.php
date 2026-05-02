@@ -58,14 +58,12 @@ class Profile extends Component
     }
 
     #[Computed]
-
     public function hasUnverifiedEmail(): bool
     {
         return Auth::user() instanceof MustVerifyEmail && ! Auth::user()->hasVerifiedEmail();
     }
 
     #[Computed]
-
     public function showDeleteUser(): bool
     {
         return ! Auth::user() instanceof MustVerifyEmail

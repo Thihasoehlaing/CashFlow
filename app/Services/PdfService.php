@@ -16,7 +16,6 @@ class PdfService
         return Pdf::loadView('quotations.pdf', ['quotation' => $quotation])->download($quotation->quotation_number.'.pdf');
     }
 
-
     public function generateInvoicePdf(Invoice $invoice): Response
     {
         $invoice->loadMissing(['client', 'items', 'paymentAccount']);

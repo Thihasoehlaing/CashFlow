@@ -20,7 +20,6 @@ class ProjectCostController extends Controller
         return redirect()->route('projects.index');
     }
 
-
     public function create(Request $request): View
     {
         return view('project-costs.form', $this->formData(new ProjectCost([
@@ -29,7 +28,6 @@ class ProjectCostController extends Controller
             'currency' => 'MYR',
         ])));
     }
-
 
     public function store(StoreProjectCostRequest $request, CurrencyService $currency): RedirectResponse
     {
@@ -47,18 +45,15 @@ class ProjectCostController extends Controller
         return redirect()->route('projects.show', $projectCost->project)->with('success', __('projects.cost_created'));
     }
 
-
     public function show(ProjectCost $projectCost): RedirectResponse
     {
         return redirect()->route('projects.show', $projectCost->project);
     }
 
-
     public function edit(ProjectCost $projectCost): View
     {
         return view('project-costs.form', $this->formData($projectCost));
     }
-
 
     public function update(UpdateProjectCostRequest $request, ProjectCost $projectCost, CurrencyService $currency): RedirectResponse
     {
@@ -75,7 +70,6 @@ class ProjectCostController extends Controller
 
         return redirect()->route('projects.show', $projectCost->project)->with('success', __('projects.cost_updated'));
     }
-
 
     public function destroy(ProjectCost $projectCost): RedirectResponse
     {

@@ -14,7 +14,6 @@ class ProjectCost extends Model
     /** @use HasFactory<ProjectCostFactory> */
     use HasFactory;
 
-
     protected function casts(): array
     {
         return [
@@ -26,18 +25,15 @@ class ProjectCost extends Model
         ];
     }
 
-
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
     }
 
-
     public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
-
 
     public function expense(): BelongsTo
     {

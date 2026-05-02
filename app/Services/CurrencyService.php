@@ -12,14 +12,12 @@ class CurrencyService
         return array_merge(['MYR' => 1.0], Setting::get('fx_rates', ['USD' => 0.212766, 'SGD' => 0.285714, 'EUR' => 0.196078, 'GBP' => 0.166667]));
     }
 
-
     public function convertToMYR(float|int|string $amount, string $currency): float
     {
         $rates = $this->rates();
 
         return round((float) $amount / max((float) ($rates[strtoupper($currency)] ?? 1), 0.000001), 2);
     }
-
 
     public function formatAmount(float|int|string $amount, string $currency): string
     {
@@ -34,7 +32,6 @@ class CurrencyService
 
         return $currencies;
     }
-
 
     public function exchangeRate(string $fromCurrency, string $toCurrency): float
     {

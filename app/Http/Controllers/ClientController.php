@@ -19,12 +19,10 @@ class ClientController extends Controller
         return view('clients.index', compact('clients'));
     }
 
-
     public function create(): View
     {
         return view('clients.form', ['client' => new Client]);
     }
-
 
     public function store(StoreClientRequest $request): RedirectResponse
     {
@@ -32,7 +30,6 @@ class ClientController extends Controller
 
         return redirect()->route('clients.index')->with('success', __('clients.created'));
     }
-
 
     public function show(Client $client): View
     {
@@ -46,12 +43,10 @@ class ClientController extends Controller
         ]);
     }
 
-
     public function edit(Client $client): View
     {
         return view('clients.form', compact('client'));
     }
-
 
     public function update(StoreClientRequest $request, Client $client): RedirectResponse
     {
@@ -59,7 +54,6 @@ class ClientController extends Controller
 
         return redirect()->route('clients.index')->with('success', __('clients.updated'));
     }
-
 
     public function destroy(Client $client): RedirectResponse
     {

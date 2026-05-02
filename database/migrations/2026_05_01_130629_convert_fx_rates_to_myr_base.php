@@ -10,12 +10,10 @@ return new class extends Migration
         $this->invertFxRates();
     }
 
-
     public function down(): void
     {
         $this->invertFxRates();
     }
-
 
     private function invertFxRates(): void
     {

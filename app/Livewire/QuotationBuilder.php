@@ -13,15 +13,22 @@ class QuotationBuilder extends Component
 {
     /** @var array<int, array<string, mixed>> */
     public array $items = [];
-    public string $currency = 'MYR';
-    public ?string $discountType = null;
-    public float $discountValue = 0;
-    public float $taxRate = 0;
-    public float $subtotal = 0;
-    public float $discountAmount = 0;
-    public float $taxAmount = 0;
-    public float $total = 0;
 
+    public string $currency = 'MYR';
+
+    public ?string $discountType = null;
+
+    public float $discountValue = 0;
+
+    public float $taxRate = 0;
+
+    public float $subtotal = 0;
+
+    public float $discountAmount = 0;
+
+    public float $taxAmount = 0;
+
+    public float $total = 0;
 
     public function mount(?Quotation $quotation = null): void
     {
@@ -48,13 +55,11 @@ class QuotationBuilder extends Component
         $this->recalculate();
     }
 
-
     public function addItem(): void
     {
         $this->items[] = ['description' => '', 'item_type' => 'fixed', 'quantity' => 1, 'unit_price' => 0, 'amount' => 0];
         $this->recalculate();
     }
-
 
     public function removeItem(int $index): void
     {
@@ -66,12 +71,10 @@ class QuotationBuilder extends Component
         $this->recalculate();
     }
 
-
     public function updated(): void
     {
         $this->recalculate();
     }
-
 
     public function recalculate(): void
     {
@@ -87,7 +90,6 @@ class QuotationBuilder extends Component
         $this->taxAmount = $totals['tax_amount'];
         $this->total = $totals['total'];
     }
-
 
     public function render(): View
     {

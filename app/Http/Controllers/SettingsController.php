@@ -35,7 +35,6 @@ class SettingsController extends Controller
         ]);
     }
 
-
     public function update(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -87,7 +86,6 @@ class SettingsController extends Controller
 
         return back()->with('success', __('settings.updated'));
     }
-
 
     public function uploadLogo(Request $request): RedirectResponse
     {

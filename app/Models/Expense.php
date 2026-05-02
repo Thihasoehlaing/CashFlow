@@ -14,7 +14,6 @@ class Expense extends Model
     /** @use HasFactory<ExpenseFactory> */
     use HasFactory;
 
-
     protected function casts(): array
     {
         return [
@@ -23,7 +22,6 @@ class Expense extends Model
             'amount_in_myr' => 'decimal:2',
         ];
     }
-
 
     public function account(): BelongsTo
     {

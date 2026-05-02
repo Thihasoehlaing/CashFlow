@@ -54,6 +54,9 @@
     .btn-primary:hover::after { left: calc(100% + 4rem); }
     .btn-secondary { @apply inline-flex h-11 w-fit items-center justify-center rounded-lg border px-4 py-2 text-sm font-semibold whitespace-nowrap transition; border-color: var(--color-border); color: var(--color-text); background: var(--color-surface-raised); }
     .btn-secondary:hover { color: var(--color-primary); border-color: var(--color-primary); }
+    form[data-submitting="true"] button,
+    form[data-submitting="true"] input[type="submit"],
+    .is-submitting { @apply pointer-events-none opacity-60; }
     .btn-danger { @apply rounded-lg px-4 py-2 text-sm font-semibold text-white; background: var(--color-danger); }
     .icon-btn { @apply grid size-8 place-items-center rounded-md border; border-color: var(--color-border); }
     .icon-btn.danger { color: var(--color-danger); }

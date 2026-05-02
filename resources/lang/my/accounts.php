@@ -1,0 +1,30 @@
+<?php
+
+return [
+    'title' => 'Accounts',
+    'create' => 'Add account',
+    'edit' => 'Edit account',
+    'created' => 'Account created.',
+    'updated' => 'Account updated.',
+    'deleted' => 'Account deleted.',
+    'delete_failed' => 'Account has transactions and cannot be deleted.',
+    'name' => 'Name',
+    'account' => 'Account',
+    'type' => 'Type',
+    'currency' => 'Currency',
+    'account_number' => 'Account number',
+    'opening_balance' => 'Opening balance',
+    'is_active' => 'Active',
+    'notes' => 'Notes',
+    'balance' => 'Balance',
+    'myr_equiv' => 'MYR equivalent',
+    'transactions' => 'Transactions',
+    'all_types' => 'All types',
+    'all_currencies' => 'All currencies',
+    'types' => [
+        'bank' => 'Bank',
+        'ewallet' => 'E-Wallet',
+        'remittance' => 'Remittance',
+        'cash' => 'Cash',
+    ],
+];
